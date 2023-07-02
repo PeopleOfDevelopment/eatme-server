@@ -1,4 +1,4 @@
-package com.example.eatmeserver.admin.admin;
+package com.example.eatmeserver.admins.admin;
 
 import com.example.eatmeserver.common.model.BaseModel;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.eatmeserver.admin.admin;
+package com.example.eatmeserver.admins.admin;
 
 import com.example.eatmeserver.util.collection.ResMap;
 import lombok.RequiredArgsConstructor;
