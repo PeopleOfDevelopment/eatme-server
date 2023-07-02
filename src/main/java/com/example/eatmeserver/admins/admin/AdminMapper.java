@@ -1,6 +1,5 @@
-package com.example.eatmeserver.admin.admin;
+package com.example.eatmeserver.admins.admin;
 
-import com.example.eatmeserver.admin.admin.UserFlex;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -8,4 +7,5 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
     List<UserFlex> getUsers();
+
 }
