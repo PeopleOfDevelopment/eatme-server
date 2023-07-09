@@ -3,6 +3,6 @@
 <mapper namespace="com.example.eatmeserver.admins.admin.AdminMapper">
 <select id="getUsers" resultType="com.example.eatmeserver.admins.admin.UserFlex">
     SELECT USER_ID
-    FROM USERS
+    FROM TBL_USERS
 </select>
 </mapper>
