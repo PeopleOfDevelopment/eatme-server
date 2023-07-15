@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.purchases.purchase.PurchaseHistoryMapper">
+    <select id="getPurchaseHistory" resultType="com.example.eatmeserver.purchases.purchase.PurchaseHistoryFlex">
+        SELECT A.ITEM_CD
+             , A.CORP_CD
+             , A.ITEM_NM
+             , A.ITEM_QTY
+             , A.SALE_PRC
+             , A.DISCOUNT_RAT
+             , A.PICK_YN
+             , A.CANCEL_YN
+             , A.ITEM_EXPDATE
+             , A.INSERT_DATE
+             , A.UPDATE_DATE
+             , A.SELLING_ST
+             , A.ORDERER_NAME
+        FROM TBL_SELLING AS A
+       WHERE ORDERER_NAME = #{ordererName}
+    </select>
+</mapper>
