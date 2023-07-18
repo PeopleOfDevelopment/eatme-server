@@ -18,6 +18,7 @@ import java.io.IOException;
 @MapperScan({
         "com.example.eatmeserver.admins.admin",
         "com.example.eatmeserver.purchases.purchase",
+        "com.example.eatmeserver.login.join",
 }) //전달한 패키지에서 @Mapper 스캔
 @RequiredArgsConstructor
 public class MybatisConfig {
