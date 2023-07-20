@@ -15,11 +15,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 @Configuration
-@MapperScan({
-        "com.example.eatmeserver.admins.admin",
-        "com.example.eatmeserver.purchases.purchase",
-        "com.example.eatmeserver.login.join",
-}) //전달한 패키지에서 @Mapper 스캔
+@MapperScan("com.example.eatmeserver.*") //전달한 패키지에서 @Mapper 스캔
 @RequiredArgsConstructor
 public class MybatisConfig {
     //커넥션 풀 및 MyBatis에 필요한 요소를 메모리에 할당 및 관리, xml과 java 연동에 필요한 경로 관리

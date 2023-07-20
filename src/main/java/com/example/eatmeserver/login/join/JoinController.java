@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/join")
+@RequestMapping("/api/join")
 public class JoinController {
 
     private final JoinService service;
