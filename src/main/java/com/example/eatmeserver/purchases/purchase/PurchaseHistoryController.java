@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/purchaseHistory")
+@RequestMapping("/api/purchaseHistory")
 public class PurchaseHistoryController {
     private final PurchaseHistoryService service;
 
