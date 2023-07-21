@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.eatmeserver.login.join.JoinMapper">
     <insert id="insert">
-
+        INSERT INTO TBL_USERS (
+                    USER_NM
+                  , USER_ID
+                  , USER_PW
+                  , USER_NICK
+                  , USER_EMAIL
+                  , USER_ADDR
+                  , USE_YN
+                  , INSERT_DATE
+                  , UPDATE_DATE
+        )VALUES (
+                #{userNm}
+              , #{userId}
+              , #{userPw}
+              , #{userNick}
+              , #{userEmail}
+              , #{userAddr}
+              , true
+              , CURRENT_TIMESTAMP
+              , CURRENT_TIMESTAMP
+        )
     </insert>
 </mapper>

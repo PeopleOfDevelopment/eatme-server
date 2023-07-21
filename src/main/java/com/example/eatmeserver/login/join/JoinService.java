@@ -2,6 +2,9 @@ package com.example.eatmeserver.login.join;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
 
 @Service
 @RequiredArgsConstructor
@@ -10,9 +13,10 @@ public class JoinService {
     private final JoinMapper mapper;
 
     /** 회원가입 */
-    public void join(JoinParam param) {
+    @Transactional
+    public int join(JoinParam param) {
         // TODO 회원가입시 아이디, 비밀번호 암복호화 작업 필요
-        mapper.insert(param);
+        return mapper.insert(param);
     }
 
 }
