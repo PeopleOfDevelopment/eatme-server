@@ -14,7 +14,8 @@ public class JoinController {
     private final JoinService service;
 
     @PostMapping("/insert")
-    public void join(@RequestBody JoinParam param) {
-        service.join(param);
+    public int join(@RequestBody JoinParam param) {
+        int result = service.join(param);
+        return result;
     }
 }
