@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.purchases.basket.BasketMapper">
+    <select id="selectBasket" resultType="com.example.eatmeserver.purchases.basket.BasketFlex">
+        SELECT A.ITEM_CD
+             , A.CORP_CD
+             , A.ITEM_NM
+             , A.ITEM_QTY
+             , A.SALE_PRC
+             , A.ITEM_EXPDATE
+          FROM TBL_BASKET AS A
+    INNER JOIN TBL_SELLING AS B
+            ON A.CORP_CD = B.CORP_CD
+           AND A.ITEM_CD = B.ITEM_CD
+         WHERE A.USER_ID = #{userId}
+           AND A.PURCHASE_ST = '주문전'
+    </select>
+
+    <insert id="insertBasket">
+        INSERT INTO TBL_BASKET (
+                    CORP_CD
+                  , ITEM_CD
+                  , SALE_PRC
+                  , ITEM_EXPDATE
+                  , USER_ID
+                  , PURCHASE_ST
+                  , ITEM_QTY
+                  , ITEM_NM
+        )VALUES (
+                #{corpCd}
+              , #{itemCd}
+              , #{salePrc}
+              , #{itemExpdate}
+              , #{userId}
+              , '주문전'
+              , #{itemQty}
+              , #{itemNm}
+        )
+    </insert>
+</mapper>
