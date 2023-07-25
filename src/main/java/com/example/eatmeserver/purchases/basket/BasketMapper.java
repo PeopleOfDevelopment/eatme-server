@@ -12,4 +12,10 @@ public interface BasketMapper {
 
     /** 장바구니 삽입 */
     int insertBasket(BasketFlex flex);
+
+    /** 장바구니 삭제 */
+    int deleteBasket(BasketFlex flex);
+
+    /** 장바구니 수정 */
+    int updateBasket(BasketFlex flex);
 }

@@ -17,4 +17,5 @@ public class BasketFlex extends BaseModel {
     private String purchaseSt;
     private String itemCd;
     private Integer itemQty;
+    private String basketNo;
 }
