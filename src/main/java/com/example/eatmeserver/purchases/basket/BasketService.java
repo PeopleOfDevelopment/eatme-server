@@ -27,4 +27,16 @@ public class BasketService {
         }
         return resultCnt;
     }
+
+    /** 장바구니 삭제 */
+    @Transactional
+    public int deleteBasket(BasketFlex flex) {
+        return mapper.deleteBasket(flex);
+    }
+
+    /** 장바구니 수정(수량변경 등등..) */
+    @Transactional
+    public int updateBasket(BasketFlex flex) {
+        return mapper.updateBasket(flex);
+    }
 }

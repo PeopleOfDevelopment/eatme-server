@@ -27,4 +27,16 @@ public class BasketController {
     public int insertBasketList(@RequestBody List<BasketFlex> flex) {
         return service.insertBasketList(flex);
     }
+
+    /** 장바구니 삭제 */
+    @PostMapping("/delete")
+    public int deleteBasket(@RequestBody BasketFlex flex) {
+        return service.deleteBasket(flex);
+    }
+
+    /** 장바구니 수정 */
+    @PostMapping("/update")
+    public int updateBasket(@RequestBody BasketFlex flex) {
+        return service.updateBasket(flex);
+    }
 }

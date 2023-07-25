@@ -37,4 +37,19 @@
               , #{itemNm}
         )
     </insert>
+
+    <delete id="deleteBasket">
+        DELETE FROM TBL_BASKET
+         WHERE CORP_CD = #{corpCd}
+           AND USER_ID = #{userId}
+           AND ITEM_CD = #{itemCd}
+    </delete>
+
+    <update id="updateBasket">
+        UPDATE TBL_BASKET
+           SET ITEM_QTY = #{itemQty}
+         WHERE CORP_CD = #{corpCd}
+           AND USER_ID = #{userId}
+           AND IMTE_CD = #{itemCd}
+    </update>
 </mapper>
