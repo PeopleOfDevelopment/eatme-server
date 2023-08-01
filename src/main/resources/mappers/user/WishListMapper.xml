@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.user.wish_list.WishListMapper">
+    <select id="selectWish" resultType="com.example.eatmeserver.user.wish_list.WishListFlex">
+        SELECT *
+        FROM TBL_USERS A
+        WHERE A.USER_ID = #{userId}
+          AND A.USER_NM = #{userNm}
+    </select>
+
+
+    <update id="updateWish">
+        UPDATE TBL_USERS
+        SET USER_PW = #{userPw}
+          , USER_NICK = #{userNick}
+          , USER_ADDR = #{userAddr}
+          , USER_EMAIL = #{userEmail}
+        WHERE USER_ID = #{userId}
+          AND USER_NM = #{userNm}
+    </update>
+
+
+    <delete id="deleteWish">
+        DELETE FROM TBL_USERS
+        WHERE USER_ID = #{userId}
+          AND USER_NM = #{userNm}
+    </delete>
+</mapper>
