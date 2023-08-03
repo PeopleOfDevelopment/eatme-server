@@ -1,4 +1,4 @@
-package com.example.eatmeserver.util.collection;
+package com.example.eatmeserver.common.util.collection;
 
 import java.util.HashMap;
 

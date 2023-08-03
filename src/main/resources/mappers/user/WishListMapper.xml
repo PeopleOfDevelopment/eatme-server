@@ -3,20 +3,15 @@
 <mapper namespace="com.example.eatmeserver.user.wish_list.WishListMapper">
     <select id="selectWish" resultType="com.example.eatmeserver.user.wish_list.WishListFlex">
         SELECT *
-        FROM TBL_USERS A
-        WHERE A.USER_ID = #{userId}
-          AND A.USER_NM = #{userNm}
+          FROM TBL_WISH A
+         WHERE A.USER_ID = #{userId}
     </select>
 
 
     <update id="updateWish">
-        UPDATE TBL_USERS
-        SET USER_PW = #{userPw}
-          , USER_NICK = #{userNick}
-          , USER_ADDR = #{userAddr}
-          , USER_EMAIL = #{userEmail}
-        WHERE USER_ID = #{userId}
-          AND USER_NM = #{userNm}
+        UPDATE TBL_WISH
+           SET ITEM_QTY = #{itemQty}
+         WHERE USER_ID = #{userId}
     </update>
 
 
