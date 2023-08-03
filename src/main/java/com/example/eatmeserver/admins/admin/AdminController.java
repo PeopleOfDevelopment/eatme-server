@@ -1,6 +1,6 @@
 package com.example.eatmeserver.admins.admin;
 
-import com.example.eatmeserver.util.collection.ResMap;
+import com.example.eatmeserver.common.util.collection.ResMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
