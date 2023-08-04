@@ -16,15 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/login")
 public class LoginController {
+
+    private final LoginService service;
+
     /**
      * [API] 사용자 정보를 기반으로 JWT를 발급하는 API
      *
      * @param param LoginParam
      * @return ApiResponseWrapper<ApiResponse> : 응답 결과 및 응답 코드 반환
      */
-    @PostMapping("/generateToken")
+    @PostMapping(value = "/generateToken", consumes = "application/json")
     public ResponseEntity<ApiResponse> selectCodeList(@RequestBody LoginParam param) {
-
         String resultToken = TokenUtils.generateJwtToken(param);
 
         ApiResponse ar = ApiResponse.builder()
