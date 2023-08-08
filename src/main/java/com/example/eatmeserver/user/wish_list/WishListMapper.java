@@ -8,4 +8,10 @@ import java.util.List;
 public interface WishListMapper {
 
     List<WishListFlex> selectWish(WishListParam param);
+
+
+    int insertWish(WishListParam param);
+
+    int deleteWish(WishListParam param);
+
 }
