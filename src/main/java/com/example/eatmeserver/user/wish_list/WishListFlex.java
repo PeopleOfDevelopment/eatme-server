@@ -6,9 +6,9 @@ import lombok.Setter;
 @Getter @Setter
 public class WishListFlex {
     private String userId;
-    private String itemCd;
-    private String itemNm;
-    private Integer itemQty;
     private String corpCd;
     private String corpNm;
+    private String userNm;
+    private String corpAddr;
+
 }

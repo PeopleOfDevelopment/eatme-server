@@ -2,22 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.eatmeserver.user.wish_list.WishListMapper">
     <select id="selectWish" resultType="com.example.eatmeserver.user.wish_list.WishListFlex">
-        SELECT *
-          FROM TBL_WISH A
-         WHERE A.USER_ID = #{userId}
+        SELECT A.USER_ID
+             , A.CORP_CD
+             , B.CORP_NM
+             , B.CORP_ADDR
+             , C.USER_NM
+        FROM TBL_WISH A LEFT OUTER JOIN TBL_CORP B
+                                        ON A.CORP_CD = B.CORP_CD
+                        LEFT OUTER JOIN TBL_USERS C
+                                        ON A.USER_ID = C.USER_ID
+        WHERE A.USER_ID = #{userId}
+          AND B.USE_YN = TRUE
     </select>
 
 
-    <update id="updateWish">
-        UPDATE TBL_WISH
-           SET ITEM_QTY = #{itemQty}
-         WHERE USER_ID = #{userId}
-    </update>
-
-
     <delete id="deleteWish">
-        DELETE FROM TBL_USERS
+        DELETE FROM TBL_WISH
         WHERE USER_ID = #{userId}
-          AND USER_NM = #{userNm}
     </delete>
+
+
+    <insert id="insertWish">
+        INSERT INTO TBL_WISH (
+                               CORP_CD
+                             , USER_ID
+
+        )VALUES (
+                    #{corpCd}
+                , #{userId}
+                )
+
+    </insert>
 </mapper>

@@ -14,4 +14,13 @@ public class WishListService {
     public List<WishListFlex> getWishList(WishListParam param) {
         return mapper.selectWish(param);
     }
+
+
+    public int insertWish(WishListParam param) {
+        return mapper.insertWish(param);
+    }
+
+    public int deleteWish(WishListParam param) {
+        return mapper.deleteWish(param);
+    }
 }
