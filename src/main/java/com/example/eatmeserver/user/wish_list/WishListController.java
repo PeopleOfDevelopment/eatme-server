@@ -19,4 +19,13 @@ public class WishListController {
     private ResMap getWishList(@RequestBody WishListParam param) {
         return new ResMap(service.getWishList(param));
     }
+
+    @PostMapping("/insert")
+    public int insertWish(@RequestBody WishListParam param) {
+        return service.insertWish(param);
+    }
+
+    public int deleteWish(@RequestBody WishListParam param) {
+        return service.deleteWish(param);
+    }
 }
