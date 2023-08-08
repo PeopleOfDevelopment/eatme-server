@@ -25,6 +25,7 @@ public class WishListController {
         return service.insertWish(param);
     }
 
+    @PostMapping("/delete")
     public int deleteWish(@RequestBody WishListParam param) {
         return service.deleteWish(param);
     }
