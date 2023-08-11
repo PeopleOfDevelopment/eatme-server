@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.main.main.MainPageMapper">
+    <select id="selectCorp5" resultType="com.example.eatmeserver.main.main.model.MainPageCorpFlex">
+        SELECT A.USER_ID
+             , A.CORP_CD
+             , B.CORP_NM
+             , B.CORP_ADDR
+             , C.USER_NM
+        FROM TBL_WISH A LEFT OUTER JOIN TBL_CORP B
+                                     ON A.CORP_CD = B.CORP_CD
+                        LEFT OUTER JOIN TBL_USERS C
+                                     ON A.USER_ID = C.USER_ID
+        WHERE A.USER_ID = #{userId}
+          AND B.USE_YN = TRUE
+    </select>
+
+</mapper>
