@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.main.main.MainPageMapper">
+    <select id="selectCorp5" resultType="com.example.eatmeserver.main.main.model.MainPageCorpFlex">
+        SELECT A.CORP_CD
+             , A.CORP_NM
+             , A.CORP_ADDR
+          FROM TBL_CORP A
+         WHERE A.CORP_ADDR iLIKE '%'||#{userAddr}||'%'
+            OR A.CORP_ADDR iLIKE '%'||#{curAddr}||'%'
+           AND A.USE_YN = TRUE
+         LIMIT 5
+    </select>
+
+</mapper>
