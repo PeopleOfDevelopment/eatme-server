@@ -9,5 +9,4 @@ public class MainPageCorpFlex {
     private String corpNm;
     private String corpAddr;
 
-
 }

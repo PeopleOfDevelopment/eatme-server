@@ -7,6 +7,6 @@ import lombok.Setter;
 public class MainPageParam {
     private String userId;
     private String userAddr;
-    private String currentAddr;
+    private String curAddr;
 
 }
