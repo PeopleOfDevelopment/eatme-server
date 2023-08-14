@@ -1,4 +1,4 @@
-package com.example.eatmeserver.purchases.purchase;
+package com.example.eatmeserver.purchases.purchase.model;
 
 import com.example.eatmeserver.common.model.BaseModel;
 import lombok.Getter;
