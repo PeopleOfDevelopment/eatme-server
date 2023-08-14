@@ -1,6 +1,8 @@
 package com.example.eatmeserver.purchases.purchase;
 
 import com.example.eatmeserver.common.util.collection.ResMap;
+import com.example.eatmeserver.purchases.purchase.model.PurchaseHistoryDParam;
+import com.example.eatmeserver.purchases.purchase.model.PurchaseHistoryParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,4 +21,9 @@ public class PurchaseHistoryController {
         return new ResMap(service.getPurchaseHistory(param));
     }
 
+    /** 구매내역 상세조회 */
+    @PostMapping("/query/detail")
+    public ResMap getPurchaseHistoryD(@RequestBody PurchaseHistoryDParam param) {
+        return new ResMap(service.getPurchaseHistoryD(param));
+    }
 }
