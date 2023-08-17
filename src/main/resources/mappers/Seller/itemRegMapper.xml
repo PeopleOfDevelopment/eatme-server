@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.seller.item_reg.ItemRegMapper">
+    <insert id="insertItem">
+        INSERT INTO TBL_ITEM (
+                    ITEM_CD
+                  , CORP_CD
+                  , ITEM_NM
+                  , ITEM_BARCODE
+                  , ITEM_PRC
+                  , USE_YN
+                  , INSERT_DATE
+                  , UPDATE_DATE
+        )VALUES (
+                #{itemCd}
+              , #{corpCd}
+              , #{itemNm}
+              , #{itemBarcode}
+              , #{itemPrc}
+              , true
+              , CURRENT_TIMESTAMP
+              , CURRENT_TIMESTAMP
+        )
+    </insert>
+
+    <select id="selectItem" resultType="com.example.eatmeserver.seller.item_reg.ItemRegFlex">
+        SELECT A.ITEM_CD
+             , A.CORP_CD
+             , A.ITEM_NM
+             , A.ITEM_BARCODE
+             , A.ITEM_PRC
+             , A.USE_YN
+             , A.INSERT_DATE
+          FROM TBL_ITEM A
+         WHERE A.USE_YN = true
+           AND A.CORP_CD = #{corpCd}
+           <if test="itemCdNm != null and itemCdNm != ''">
+               AND (  A.ITEM_CD iLIKE '%' ||#{itemCdNm}|| '%'
+                OR A.ITEM_NM iLIKE '%'||#{itemCdNm}||'%'
+               )
+           </if>
+           <if test="itemCdNm != null and itemCdNm != ''">
+               AND A.ITEM_BARCODE = #{itemBarcode}
+           </if>
+    </select>
+</mapper>
