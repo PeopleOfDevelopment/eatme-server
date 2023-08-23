@@ -12,4 +12,10 @@ public interface ItemRegMapper {
 
     /** 등록된 품목 조회 */
     List<ItemRegFlex> selectItem(ItemRegParam param);
+
+    /** 등록된 품목 수정 */
+    int updateItem(ItemRegFlex flex);
+
+    /** 등록된 품목 삭제 */
+    int deleteItem(ItemRegParam param);
 }

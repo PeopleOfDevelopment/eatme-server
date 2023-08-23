@@ -24,4 +24,14 @@ public class ItemRegService {
     public List<ItemRegFlex> getItems(ItemRegParam param) {
         return mapper.selectItem(param);
     }
+
+    /** 품목 수정 */
+    public int updateItem(ItemRegFlex flex) {
+        return mapper.updateItem(flex);
+    }
+
+    /** 품목 삭제 */
+    public int deleteItem(ItemRegParam param) {
+        return mapper.deleteItem(param);
+    }
 }
