@@ -7,9 +7,27 @@
              , A.CORP_ADDR
           FROM TBL_CORP A
          WHERE A.CORP_ADDR iLIKE '%'||#{userAddr}||'%'
-            OR A.CORP_ADDR iLIKE '%'||#{curAddr}||'%'
+            OR A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
            AND A.USE_YN = TRUE
          LIMIT 5
+    </select>
+
+    <select id="selectItem5" resultType="com.example.eatmeserver.main.main.model.MainPageItemFlex">
+        SELECT A.CORP_CD
+             , B.CORP_NM
+             , A.ITEM_CD
+             , A.ITEM_NM
+             , A.ITEM_PRC
+             , B.SALE_PRC
+             , B.DISCOUNT_RAT
+             , B.ITEM_EXPDATE
+          FROM TBL_ITEM A
+               INNER JOIN TBL_SELLING B
+                       ON A.CORP_CD = B.CORP_CD
+                      AND A.ITEM_CD = B.ITEM_CD
+         WHERE B.ITEM_EXPDATE > CURRENT_TIMESTAMP
+           AND A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
+
     </select>
 
 </mapper>

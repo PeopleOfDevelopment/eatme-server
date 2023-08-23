@@ -4,6 +4,7 @@ package com.example.eatmeserver.main.main.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter @Setter
@@ -15,4 +16,5 @@ public class MainPageItemFlex {
     private Integer itemPrc;
     private Integer salePrc;
     private LocalDate itemExpdate;
+    private BigDecimal discountRat;
 }
