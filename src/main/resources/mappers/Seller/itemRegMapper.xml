@@ -23,6 +23,20 @@
         )
     </insert>
 
+    <update id="updateItem">
+        UPDATE TBL_ITEM
+           SET ITEM_NM = #{itemNm}
+             , ITEM_BARCODE = #{itemBarcode}
+             , ITEM_PRC = #{itemPrc}
+         WHERE CORP_CD = #{corpCd}
+           AND ITEM_CD = #{itemCd}
+    </update>
+
+    <delete id="deleteItem">
+        DELETE FROM TBL_ITEM
+              WHERE ITEM_CD = #{userId}
+    </delete>
+
     <select id="selectItem" resultType="com.example.eatmeserver.seller.item_reg.ItemRegFlex">
         SELECT A.ITEM_CD
              , A.CORP_CD

@@ -25,4 +25,14 @@ public class ItemRegController {
     public ResMap getItems(@RequestBody ItemRegParam param) {
         return new ResMap(service.getItems(param));
     }
+
+    @PostMapping("/update")
+    public int updateItem(@RequestBody ItemRegFlex flex) {
+        return service.updateItem(flex);
+    }
+
+    @PostMapping("/delete")
+    public int deleteItem(@RequestBody ItemRegParam param) {
+        return service.deleteItem(param);
+    }
 }

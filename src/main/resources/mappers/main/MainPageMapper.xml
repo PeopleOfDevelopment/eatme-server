@@ -27,7 +27,7 @@
                       AND A.ITEM_CD = B.ITEM_CD
          WHERE B.ITEM_EXPDATE > CURRENT_TIMESTAMP
            AND A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
-
+         LIMIT 5
     </select>
 
 </mapper>
