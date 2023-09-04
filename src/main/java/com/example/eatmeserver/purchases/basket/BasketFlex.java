@@ -13,6 +13,8 @@ public class BasketFlex extends BaseModel {
     private String userId;
     private String itemNm;
     private Integer salePrc;
+    private Integer itemPrc;
+    private Double discountRat;
     private LocalDate itemExpdate;
     private String purchaseSt;
     private String itemCd;

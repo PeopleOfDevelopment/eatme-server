@@ -6,12 +6,17 @@
              , A.CORP_CD
              , A.ITEM_NM
              , A.ITEM_QTY
-             , A.SALE_PRC
+             , B.SALE_PRC
+             , C.ITEM_PRC
+             , B.DISCOUNT_RAT
              , A.ITEM_EXPDATE
           FROM TBL_BASKET AS A
     INNER JOIN TBL_SELLING AS B
             ON A.CORP_CD = B.CORP_CD
            AND A.ITEM_CD = B.ITEM_CD
+    INNER JOIN TBL_ITEM AS C
+            ON A.CORP_CD = C.CORP_CD
+           AND A.ITEM_CD = C.ITEM_CD
          WHERE A.USER_ID = #{userId}
            AND A.PURCHASE_ST = '주문전'
     </select>
@@ -50,6 +55,6 @@
            SET ITEM_QTY = #{itemQty}
          WHERE CORP_CD = #{corpCd}
            AND USER_ID = #{userId}
-           AND IMTE_CD = #{itemCd}
+           AND ITEM_CD = #{itemCd}
     </update>
 </mapper>
