@@ -9,7 +9,7 @@ import java.util.List;
 public interface DashboardMapper {
 
     /** 매출 조회 */
-    Integer getSelling(DashboardParam param);
+    List<DashboardSellingFlex> getSelling(DashboardParam param);
 
     /** 문의 조회 */
     List<DashboardQnaFlex> selectQna(DashboardParam param);
