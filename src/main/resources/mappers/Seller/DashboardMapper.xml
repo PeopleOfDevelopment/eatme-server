@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.eatmeserver.seller.dashboard.model.DashboardParam">
+<mapper namespace="com.example.eatmeserver.seller.dashboard.DashboardMapper">
+    <select id="getSelling" resultType="com.example.eatmeserver.seller.dashboard.model.DashboardSellingFlex">
+        SELECT A.SALE_PRC
+             , A.SOLD_QTY
+          FROM TBL_SELLING A
+         WHERE A.CORP_CD = #{corpCd}
+           AND (A.SELLING_ST = '2'
+               OR A.SELLING_ST = '3'
+               )
+           AND A.UPDATE_DATE >= #{frDt}
+           AND A.UPDATE_DATE &lt; #{toDt} + 1
+    </select>
 
+    <select id="selectQna" resultType="com.example.eatmeserver.seller.dashboard.model.DashboardQnaFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+          FROM TBL_QNA A
+         WHERE A.CORP_CD = #{corpCd}
+           AND A.QNA_ST = '1'
+    </select>
+
+    <select id="selectQnaDetail" resultType="com.example.eatmeserver.seller.dashboard.model.DashboardQnaDetailFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+             , A.QNA_TXT
+             , A.QNA_ANS
+          FROM TBL_QNA A
+         WHERE A.CORP_CD = #{corpCd}
+           AND A.QNA_NO = #{qnaNo}
+    </select>
+
+    <update id="updateQna">
+        UPDATE TBL_QNA
+           SET QNA_ANS = #{qnaAns}
+             , QNA_ST = '2'
+             , UPDATE_DATE = CURRENT_TIMESTAMP
+         WHERE CORP_CD = #{corpCd}
+           AND QNA_NO = #{qnaNo}
+    </update>
 </mapper>

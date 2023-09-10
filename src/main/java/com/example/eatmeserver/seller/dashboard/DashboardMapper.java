@@ -15,7 +15,10 @@ public interface DashboardMapper {
     List<DashboardQnaFlex> selectQna(DashboardParam param);
 
     /** 문의 상세 조회 */
-    DashboardQnaDetailFlex selectQnaDetail(DashboardQnaParam param);
+    DashboardQnaDetailFlex selectQnaDetail(DashboardParam param);
+
+    /** 문의 답변 작성 */
+    int updateQna(DashboardQnaDetailFlex flex);
 
     /** 픽업 & 배송조회 */
     DashboardPickDelFlex selectSellingPickDel(DashboardParam param);
