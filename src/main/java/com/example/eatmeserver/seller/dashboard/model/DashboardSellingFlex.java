@@ -5,5 +5,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class DashboardSellingFlex {
-    private Integer sellPrc;
+    private Integer salePrc;
+    private Integer soldQty;
 }
