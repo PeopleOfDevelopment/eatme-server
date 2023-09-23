@@ -43,7 +43,17 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 "/api/dashboard/selling",
                 "/api/dashboard/qnaList",
                 "/api/dashboard/qnaDetail",
-                "/api/dashboard/updateQnaAns"
+                "/api/dashboard/updateQnaAns",
+                "/api/basket/query",
+                "/api/admin/qna/query",
+                "/api/admin/qna/detail",
+                "/api/admin/qna/update",
+                "/api/admin/report/query",
+                "/api/admin/report/detail",
+                "/api/admin/notice/query",
+                "/api/admin/notice/detail",
+                "/api/admin/notice/insert",
+                "/api/admin/notice/update"
         );
 
         // 2. 토큰이 필요하지 않은 API URL의 경우 => 로직 처리 없이 다음 필터로 이동

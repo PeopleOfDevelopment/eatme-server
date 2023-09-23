@@ -1,8 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.eatmeserver.admins.admin.AdminMapper">
-<select id="getUsers" resultType="com.example.eatmeserver.admins.admin.UserFlex">
-    SELECT USER_ID
-    FROM TBL_USERS
-</select>
+    <select id="getUsers" resultType="com.example.eatmeserver.admins.admin.UserFlex">
+        SELECT USER_ID
+        FROM TBL_USERS
+    </select>
+
+    <select id="selectQna" resultType="com.example.eatmeserver.admins.admin.model.AdminQnaFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+             , A.QNA_TXT
+             , A.QNA_ST
+             , A.QNA_TP
+             , A.INSERT_DATE
+          FROM TBL_QNA A
+         WHERE A.QNA_ST = '답변대기'
+           AND A.QNA_TP = #{qnaTp}
+          <if test="limitNum != null and limitNum != ''">
+      ORDER BY A.INSERT_DATE
+         LIMIT #{limitNum}
+          </if>
+    </select>
+
+    <select id="selectQnaDetail" resultType="com.example.eatmeserver.admins.admin.model.AdminQnaFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+             , A.QNA_TXT
+             , A.QNA_ST
+             , A.QNA_TP
+             , A.INSERT_DATE
+          FROM TBL_QNA A
+         WHERE A.QNA_NO = #{qnaNo}
+    </select>
+
+    <update id="updateQna">
+        UPDATE TBL_QNA
+           SET QNA_ANS = #{qnaAns}
+             , UPDATE_DATE = CURRENT_TIMESTAMP
+         WHERE QNA_NO = #{qnaNo}
+    </update>
+
+    <select id="selectReport" resultType="com.example.eatmeserver.admins.admin.model.AdminReportFlex">
+        SELECT A.REPORT_NO
+             , A.CORP_CD
+             , A.USER_ID
+             , A.REPORT_TIT
+             , A.REPORT_TXT
+             , A.REPORT_ST
+             , A.INSERT_DATE
+          FROM TBL_REPORT A
+         WHERE A.REPORT_ST = '처리대기'
+        <if test="limitNum != null and limitNum != ''">
+      ORDER BY A.INSERT_DATE
+         LIMIT #{limitNum}
+        </if>
+    </select>
+
+    <select id="selectReportDetail" resultType="com.example.eatmeserver.admins.admin.model.AdminReportFlex">
+        SELECT A.REPORT_NO
+             , A.CORP_CD
+             , A.USER_ID
+             , A.REPORT_TIT
+             , A.REPORT_TXT
+             , A.REPORT_ST
+             , A.INSERT_DATE
+          FROM TBL_REPORT A
+         WHERE A.REPORT_NO = #{reportNo}
+    </select>
+
+    <select id="selectNotice" resultType="com.example.eatmeserver.admins.admin.model.AdminNoticeFlex">
+        SELECT A.NOTICE_NO
+             , A.NOTICE_TIT
+             , A.NOTICE_TXT
+             , A.NOTICE_TODT
+             , A.NOTICE_FRDT
+             , A.INSERT_DATE
+          FROM TBL_NOTICE A
+         WHERE A.NOTICE_FRDT > #{noticeFrdt}
+           AND A.NOTICE_TODT &lt;= #{noticeTodt}
+           AND A.NOTICE_TP = #{noticeTp}
+        <if test="limitNum != null and limitNum != ''">
+            ORDER BY A.INSERT_DATE
+            LIMIT #{limitNum}
+        </if>
+    </select>
+
+    <select id="selectNoticeDetail" resultType="com.example.eatmeserver.admins.admin.model.AdminNoticeFlex">
+        SELECT A.NOTICE_NO
+             , A.NOTICE_TIT
+             , A.NOTICE_TXT
+             , A.NOTICE_TODT
+             , A.NOTICE_FRDT
+             , A.INSERT_DATE
+          FROM TBL_NOTICE A
+         WHERE A.NOTICE_NO = #{noticeNo}
+    </select>
+
+    <insert id="insertNotice">
+        INSERT INTO TBL_NOTICE (
+                    NOTICE_NO
+                  , NOTICE_TIT
+                  , NOTICE_TXT
+                  , NOTICE_TODT
+                  , NOTICE_FRDT
+                  , INSERT_DATE
+                  , UPDATE_DATE
+                  , NOTICE_TP
+        )VALUES (
+                  #{noticeNo}
+                , #{noticeTit}
+                , #{noticeTxt}
+                , #{noticeTodt}
+                , #{noticeFrdt}
+                , CURRENT_TIMESTAMP
+                , CURRENT_TIMESTAMP
+                , #{noticeTp}
+                )
+    </insert>
+
+    <update id="updateNotice">
+        UPDATE TBL_NOTICE
+           SET NOTICE_TIT = #{noticeTit}
+             , NOTICE_TXT = #{noticeTxt}
+             , NOTICE_TODT = #{noticeTodt}
+             , NOTICE_FRDT = #{noticeFrdt}
+             , UPDATE_DATE = CURRENT_TIMESTAMP
+             , NOTICE_TP = #{noticeTp}
+        WHERE NOTICE_NO = #{noticeNo}
+    </update>
 </mapper>
