@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.seller.goods_reg.GoodsRegMapper">
+    <insert id="insertGoods">
+        INSERT INTO TBL_GOODS (
+                               ITEM_CD
+                             , CORP_CD
+                             , ITEM_BARCODE
+                             , SALE_PRC
+                             , SALE_AMT
+                             , DISCOUNT_RAT
+                             , ITEM_EXPDATE
+                             , INSERT_DATE
+                             , UPDATE_DATE
+        )VALUES (
+                  #{itemCd}
+                , #{corpCd}
+                , #{itemBarcode}
+                , #{salePrc}
+                , #{saleAmt}
+                , #{discountRat}
+                , #{itemExpdate}
+                , CURRENT_TIMESTAMP
+                , CURRENT_TIMESTAMP
+                )
+    </insert>
+
+    <update id="updateGoods">
+        UPDATE TBL_GOODS
+        SET ITEM_CD = #{itemCd}
+          , ITEM_BARCODE = #{itemBarcode}
+          , SALE_PRC = #{salePrc}
+          , SALE_AMT = #{saleAmt}
+          , DISCOUNT_RAT = #{discountRat}
+          , UPDATE_DATE = CURRENT_TIMESTAMP
+        WHERE CORP_CD = #{corpCd}
+          AND ITEM_CD = #{itemCd}
+    </update>
+
+    <delete id="deleteGoods">
+        DELETE FROM TBL_GOODS
+        WHERE ITEM_CD = #{itemCd}
+          AND CORP_CD = #{corpCd}
+    </delete>
+
+    <select id="selectGoods" resultType="com.example.eatmeserver.seller.goods_reg.GoodsRegFlex">
+        SELECT A.ITEM_CD
+        , A.CORP_CD
+        , B.ITEM_NM
+        , A.ITEM_BARCODE
+        , A.SALE_PRC
+        , A.SALE_AMT
+        , A.DISCOUNT_RAT
+        , A.ITEM_EXPDATE
+        FROM TBL_GOODS A LEFT OUTER JOIN TBL_ITEM B
+                         ON A.CORP_CD = B.CORP_CD
+                        AND A.ITEM_CD = B.ITEM_CD
+        WHERE A.CORP_CD = #{corpCd}
+        <if test="itemCdNm != null and itemCdNm != ''">
+            AND (  A.ITEM_CD iLIKE '%' ||#{itemCdNm}|| '%'
+            OR B.ITEM_NM iLIKE '%'||#{itemCdNm}||'%'
+            )
+        </if>
+        <if test="itemCdNm != null and itemCdNm != ''">
+            AND A.ITEM_BARCODE = #{itemBarcode}
+        </if>
+    </select>
+</mapper>
