@@ -34,7 +34,8 @@
 
     <delete id="deleteItem">
         DELETE FROM TBL_ITEM
-              WHERE ITEM_CD = #{userId}
+              WHERE ITEM_CD = #{itemCd}
+                AND CORP_CD = #{corpCd}
     </delete>
 
     <select id="selectItem" resultType="com.example.eatmeserver.seller.item_reg.ItemRegFlex">
