@@ -2,7 +2,7 @@ package com.example.eatmeserver.login.login;
 
 import lombok.*;
 
-@Getter @Setter
+@Getter @Setter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LoginParam {
 
