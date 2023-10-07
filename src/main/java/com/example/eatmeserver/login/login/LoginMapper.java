@@ -7,4 +7,5 @@ import java.util.Optional;
 @Mapper
 public interface LoginMapper {
     Optional<LoginParam> getUser(LoginParam param);
+
 }

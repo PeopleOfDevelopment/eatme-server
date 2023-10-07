@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/login")
@@ -27,6 +29,9 @@ public class LoginController {
      */
     @PostMapping(value = "/generateToken", consumes = "application/json")
     public ResponseEntity<ApiResponse> selectCodeList(@RequestBody LoginParam param) {
+        if (service.login(param).equals(Optional.empty())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         String resultToken = TokenUtils.generateJwtToken(param);
 
         ApiResponse ar = ApiResponse.builder()
