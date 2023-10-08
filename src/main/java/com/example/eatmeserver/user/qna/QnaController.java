@@ -18,6 +18,11 @@ public class QnaController {
         return new ResMap(service.getQnaList(param));
     }
 
+    @PostMapping("/query/detail")
+    public ResMap getQnaDetail(@RequestBody QnaParam param) {
+        return new ResMap(service.getQnaDetail(param));
+    }
+
     @PostMapping("/insert")
     public int insertQna(@RequestBody QnaFlex flex) {
         return service.insertQna(flex);
