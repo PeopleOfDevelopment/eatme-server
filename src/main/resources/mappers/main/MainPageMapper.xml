@@ -9,25 +9,29 @@
          WHERE A.CORP_ADDR iLIKE '%'||#{userAddr}||'%'
             OR A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
            AND A.USE_YN = TRUE
-         LIMIT 5
+         LIMIT 10
     </select>
 
     <select id="selectItem5" resultType="com.example.eatmeserver.main.main.model.MainPageItemFlex">
         SELECT A.CORP_CD
-             , B.CORP_NM
+             , C.CORP_NM
+             , C.CORP_ADDR
              , A.ITEM_CD
-             , A.ITEM_NM
-             , A.ITEM_PRC
-             , B.SALE_PRC
-             , B.DISCOUNT_RAT
-             , B.ITEM_EXPDATE
-          FROM TBL_ITEM A
-               INNER JOIN TBL_SELLING B
+             , B.ITEM_NM
+             , B.ITEM_PRC
+             , A.SALE_PRC
+             , A.SALE_AMT
+             , A.DISCOUNT_RAT
+             , A.ITEM_EXPDATE
+          FROM TBL_GOODS A
+               INNER JOIN TBL_ITEM B
                        ON A.CORP_CD = B.CORP_CD
                       AND A.ITEM_CD = B.ITEM_CD
-         WHERE B.ITEM_EXPDATE > CURRENT_TIMESTAMP
-           AND A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
-         LIMIT 5
+               INNER JOIN TBL_CORP C
+                       ON B.CORP_CD = C.CORP_CD
+         WHERE A.ITEM_EXPDATE > CURRENT_TIMESTAMP
+           AND C.CORP_ADDR iLIKE '%'||#{curAddr}||'%'
+         LIMIT 10
     </select>
 
 </mapper>
