@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.eatmeserver.user.wish_list.WishListMapper">
+<mapper namespace="com.example.eatmeserver.user.qna.QnaMapper">
     <select id="selectQna" resultType="com.example.eatmeserver.user.qna.QnaFlex">
-        SELECT A.QNA_NO
-        , A.USER_ID
-        , A.QNA_TIT
-        , A.QNA_TXT
-        , A.QNA_ST
-        , A.QNA_TP
-        , A.INSERT_DATE
-        FROM TBL_QNA A
-    </select>
-
-    <select id="selectQnaDetail" resultType="com.example.eatmeserver.admins.admin.model.AdminQnaFlex">
         SELECT A.QNA_NO
              , A.USER_ID
              , A.QNA_TIT
@@ -20,8 +9,20 @@
              , A.QNA_ST
              , A.QNA_TP
              , A.INSERT_DATE
-        FROM TBL_QNA A
-        WHERE A.QNA_NO = #{qnaNo}
+          FROM TBL_QNA A
+         WHERE A.USER_ID = #{userId}
+    </select>
+
+    <select id="selectQnaDetail" resultType="com.example.eatmeserver.user.qna.QnaFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+             , A.QNA_TXT
+             , A.QNA_ST
+             , A.QNA_TP
+             , A.INSERT_DATE
+          FROM TBL_QNA A
+         WHERE A.QNA_NO = #{qnaNo}
     </select>
 
     <insert id="insertQna">
@@ -32,13 +33,19 @@
                 , QNA_TXT
                 , QNA_ST
                 , QNA_TP
+                , CORP_CD
                 , INSERT_DATE
+                , UPDATE_DATE
         ) VALUES (
-                   QNA_NO = #{qnaNo}
-                 , QNA_TIT = #{qnaTit}
-                 , QNA_TXT = #{qnaTxt}
-                 , UPDATE_DATE = CURRENT_TIMESTAMP
-
+                   #{qnaNo}
+                 , #{userId}
+                 , #{qnaTit}
+                 , #{qnaTxt}
+                 , '답변대기'
+                 , #{qnaTp}
+                 , #{corpCd}
+                 , CURRENT_TIMESTAMP
+                 , CURRENT_TIMESTAMP
         )
     </insert>
 
@@ -49,4 +56,9 @@
           , UPDATE_DATE = CURRENT_TIMESTAMP
         WHERE QNA_NO = #{qnaNo}
     </update>
+
+    <delete id="deleteQna">
+        DELETE FROM TBL_QNA
+         WHERE QNA_NO = #{qnaNo}
+    </delete>
 </mapper>

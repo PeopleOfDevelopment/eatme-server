@@ -15,6 +15,10 @@ public class QnaService {
         return mapper.selectQna(param);
     }
 
+    public QnaFlex getQnaDetail(QnaParam param) {
+        return mapper.selectQnaDetail(param);
+    }
+
     @Transactional
     public int insertQna(QnaFlex flex) {
         return mapper.insertQna(flex);

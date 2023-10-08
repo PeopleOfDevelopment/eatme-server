@@ -9,6 +9,9 @@ public interface QnaMapper {
     /** Q&A 리스트 조회 */
     List<QnaFlex> selectQna(QnaParam param);
 
+    /** Q&A 상세보기 */
+    QnaFlex selectQnaDetail(QnaParam param);
+
     /** Q&A 등록 */
     int insertQna(QnaFlex flex);
 
