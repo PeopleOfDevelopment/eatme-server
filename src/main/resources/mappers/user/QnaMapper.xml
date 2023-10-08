@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.user.wish_list.WishListMapper">
+    <select id="selectQna" resultType="com.example.eatmeserver.user.qna.QnaFlex">
+        SELECT A.QNA_NO
+        , A.USER_ID
+        , A.QNA_TIT
+        , A.QNA_TXT
+        , A.QNA_ST
+        , A.QNA_TP
+        , A.INSERT_DATE
+        FROM TBL_QNA A
+    </select>
+
+    <select id="selectQnaDetail" resultType="com.example.eatmeserver.admins.admin.model.AdminQnaFlex">
+        SELECT A.QNA_NO
+             , A.USER_ID
+             , A.QNA_TIT
+             , A.QNA_TXT
+             , A.QNA_ST
+             , A.QNA_TP
+             , A.INSERT_DATE
+        FROM TBL_QNA A
+        WHERE A.QNA_NO = #{qnaNo}
+    </select>
+
+    <insert id="insertQna">
+        INSERT INTO TBL_QNA (
+                  QNA_NO
+                , USER_ID
+                , QNA_TIT
+                , QNA_TXT
+                , QNA_ST
+                , QNA_TP
+                , INSERT_DATE
+        ) VALUES (
+                   QNA_NO = #{qnaNo}
+                 , QNA_TIT = #{qnaTit}
+                 , QNA_TXT = #{qnaTxt}
+                 , UPDATE_DATE = CURRENT_TIMESTAMP
+
+        )
+    </insert>
+
+    <update id="updateQna">
+        UPDATE TBL_QNA
+        SET QNA_TIT = #{qnaTit}
+          , QNA_TXT = #{qnaTxt}
+          , UPDATE_DATE = CURRENT_TIMESTAMP
+        WHERE QNA_NO = #{qnaNo}
+    </update>
+</mapper>
