@@ -7,7 +7,7 @@
              , A.CORP_ADDR
           FROM TBL_CORP A
          WHERE A.CORP_ADDR iLIKE '%'||#{userAddr}||'%'
-            OR A.CUR_ADDR iLIKE '%'||#{curAddr}||'%'
+            OR A.CORP_ADDR iLIKE '%'||#{curAddr}||'%'
            AND A.USE_YN = TRUE
          LIMIT 10
     </select>
