@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.seller.seller_notice.SellerNoticeMapper">
+    <select id="selectNotice" resultType="com.example.eatmeserver.seller.seller_notice.SellerNoticeFlex">
+        SELECT A.NOTICE_NO
+             , A.NOTICE_TIT
+             , A.NOTICE_TXT
+             , A.NOTICE_TODT
+             , A.NOTICE_FRDT
+             , A.INSERT_DATE
+             , A.NOTICE_TP
+          FROM TBL_NOTICE A
+         WHERE A.NOTICE_FRDT > #{noticeFrdt}
+           AND A.NOTICE_TODT &lt;= #{noticeTodt}
+           AND A.NOTICE_TP = #{noticeTp}
+           AND A.CORP_CD = #{corpCd}
+    </select>
+
+    <select id="selectNoticeDetail" resultType="com.example.eatmeserver.seller.seller_notice.SellerNoticeFlex">
+        SELECT A.NOTICE_NO
+             , A.NOTICE_TIT
+             , A.NOTICE_TXT
+             , A.NOTICE_TODT
+             , A.NOTICE_FRDT
+             , A.INSERT_DATE
+        FROM TBL_NOTICE A
+        WHERE A.NOTICE_NO = #{noticeNo}
+    </select>
+
+    <insert id="insertNotice">
+        INSERT INTO TBL_NOTICE (
+                                 NOTICE_NO
+                               , NOTICE_TIT
+                               , NOTICE_TXT
+                               , NOTICE_TODT
+                               , NOTICE_FRDT
+                               , INSERT_DATE
+                               , UPDATE_DATE
+                               , NOTICE_TP
+                               , CORP_CD
+        )VALUES (
+                    #{noticeNo}
+                , #{noticeTit}
+                , #{noticeTxt}
+                , #{noticeTodt}
+                , #{noticeFrdt}
+                , CURRENT_TIMESTAMP
+                , CURRENT_TIMESTAMP
+                , '구매자'
+                , #{corpCd}
+                )
+    </insert>
+
+    <update id="updateNotice">
+        UPDATE TBL_NOTICE
+        SET NOTICE_TIT = #{noticeTit}
+          , NOTICE_TXT = #{noticeTxt}
+          , NOTICE_TODT = #{noticeTodt}
+          , NOTICE_FRDT = #{noticeFrdt}
+          , UPDATE_DATE = CURRENT_TIMESTAMP
+        WHERE NOTICE_NO = #{noticeNo}
+    </update>
+</mapper>
