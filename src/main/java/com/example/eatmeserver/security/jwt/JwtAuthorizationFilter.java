@@ -58,6 +58,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 "/api/goodsReg/insert",
                 "/api/goodsReg/update",
                 "/api/goodsReg/delete",
+                "/api/goodsReg/query",
                 "/api/main/query/item",
                 "/api/qna/query"
         );
