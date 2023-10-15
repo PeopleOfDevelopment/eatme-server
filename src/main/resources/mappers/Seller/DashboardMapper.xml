@@ -19,7 +19,7 @@
              , A.QNA_TIT
           FROM TBL_QNA A
          WHERE A.CORP_CD = #{corpCd}
-           AND A.QNA_ST = '1'
+           AND A.QNA_ST = '답변대기'
     </select>
 
     <select id="selectQnaDetail" resultType="com.example.eatmeserver.seller.dashboard.model.DashboardQnaDetailFlex">
