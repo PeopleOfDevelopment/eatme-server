@@ -2,7 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.eatmeserver.purchases.around_item.AroundItemMapper">
     <select id="selectItem" resultType="com.example.eatmeserver.purchases.around_item.AroundItemFlex">
-
+        SELECT A.CORP_CD
+             , B.ITEM_CD
+             , B.SALE_AMT
+             , B.SALE_PRC
+             , B.DISCOUNT_RAT
+             , B.ITEM_EXPDATE
+             , C.ITEM_NM
+          FROM TBL_CORP A INNER JOIN TBL_GOODS B
+                                  ON A.CORP_CD = B.CORP_CD
+                          INNER JOIN TBL_ITEM C
+                                  ON B.ITEM_CD = C.ITEM_CD
+         WHERE A.CORP_ADDR iLIKE '%' ||#{curAddr}|| '%'
     </select>
 
 </mapper>
