@@ -53,8 +53,7 @@
         , A.DISCOUNT_RAT
         , A.ITEM_EXPDATE
         FROM TBL_GOODS A LEFT OUTER JOIN TBL_ITEM B
-                         ON A.CORP_CD = B.CORP_CD
-                        AND A.ITEM_CD = B.ITEM_CD
+                        ON A.ITEM_CD = B.ITEM_CD
         WHERE A.CORP_CD = #{corpCd}
         <if test="itemCdNm != null and itemCdNm != ''">
             AND (  A.ITEM_CD iLIKE '%' ||#{itemCdNm}|| '%'
