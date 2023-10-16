@@ -10,5 +10,6 @@ public class AroundMarketFlex  extends BaseModel {
     private String corpNm;
     private String corpAddr;
     private String corpDesc;
-
+    private String corpPhoneNumber;
+    private String ceoNm;
 }

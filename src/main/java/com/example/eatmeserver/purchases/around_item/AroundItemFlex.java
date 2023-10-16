@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Getter @Setter
 public class AroundItemFlex extends BaseModel {
     private String itemCd;
+    private String itemNm;
     private LocalDate itemExpdate;
     private Double discountRat;
     private Integer salePrc;

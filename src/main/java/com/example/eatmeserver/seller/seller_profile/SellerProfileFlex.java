@@ -11,6 +11,9 @@ public class SellerProfileFlex extends BaseModel {
     private String corpAddr;
     private String corpRegNo;
     private String corpDesc;
-    private Boolean userYn;
     private String corpNm;
+    private String ceoNm;
+    private String corpPhoneNumber;
+    private String corpEmail;
+    private Boolean useYn;
 }
