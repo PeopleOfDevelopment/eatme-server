@@ -2,6 +2,7 @@ package com.example.eatmeserver.login.login;
 
 import com.example.eatmeserver.common.response.ApiResponse;
 import com.example.eatmeserver.common.util.code.SuccessCode;
+import com.example.eatmeserver.common.util.collection.ResMap;
 import com.example.eatmeserver.common.util.login_utils.TokenUtils;
 import com.example.eatmeserver.security.AuthConstants;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import java.util.Optional;
 public class LoginController {
 
     private final LoginService service;
-
+    private final FindService find;
     /**
      * [API] 사용자 정보를 기반으로 JWT를 발급하는 API
      *
@@ -43,4 +44,20 @@ public class LoginController {
 
         return new ResponseEntity<>(ar, HttpStatus.OK);
     }
+
+    @PostMapping("/findId")
+    public ResMap findId(@RequestBody LoginParam param) {
+        return new ResMap(find.findId(param));
+    }
+
+    @PostMapping("/findPw")
+    public boolean findPw(@RequestBody LoginParam param) {
+        return find.findPw(param);
+    }
+
+    @PostMapping("/resetPw")
+    public int resetPw(@RequestBody LoginParam param) {
+        return find.resetPw(param);
+    }
+
 }

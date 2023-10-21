@@ -19,4 +19,8 @@ public class LoginParam {
         this.userPw = userPw;
         this.userNm = userNm;
     }
+
+    // 아이디 비밀번호 찾기 파라미터
+    private String userEmail;
+    private String userPhoneNumber;
 }
