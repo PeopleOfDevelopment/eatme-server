@@ -10,4 +10,27 @@
             AND USER_PW = #{userPw}
     </select>
 
+    <select id="findId" resultType="com.example.eatmeserver.login.login.LoginParam">
+        SELECT A.USER_ID
+        FROM TBL_USERS A
+        WHERE 1=1
+        <if test="userEmail != null and userEmail != ''">
+            AND A.USER_EMAIL = #{userEmail}
+        </if>
+        <if test="userPhoneNumber != null and userPhoneNumber != ''">
+            AND A.USER_PHONE_NUMBER = #{userPhoneNumber}
+        </if>
+    </select>
+
+    <select id="findPw" resultType="int">
+        SELECT COUNT(A.USER_ID)
+          FROM TBL_USERS A
+         WHERE A.USER_ID = #{userId}
+    </select>
+
+    <update id="resetPw">
+        UPDATE TBL_USERS
+        SET USER_PW = #{userPw}
+        WHERE USER_ID = #{userId}
+    </update>
 </mapper>

@@ -8,4 +8,9 @@ import java.util.Optional;
 public interface LoginMapper {
     Optional<LoginParam> getUser(LoginParam param);
 
+    LoginParam findId(LoginParam param);
+
+    Integer findPw(LoginParam param);
+
+    Integer resetPw(LoginParam param);
 }
