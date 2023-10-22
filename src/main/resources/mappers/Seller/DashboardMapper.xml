@@ -17,6 +17,7 @@
         SELECT A.QNA_NO
              , A.USER_ID
              , A.QNA_TIT
+             , A.INSERT_DATE
           FROM TBL_QNA A
          WHERE A.CORP_CD = #{corpCd}
            AND A.QNA_ST = '답변대기'

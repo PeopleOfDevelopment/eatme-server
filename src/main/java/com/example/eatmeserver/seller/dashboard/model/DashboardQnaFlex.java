@@ -10,5 +10,5 @@ public class DashboardQnaFlex {
     private String qnaNo;
     private String userId;
     private String qnaTit;
-    private LocalDate insertDatetime;
+    private LocalDate insertDate;
 }
