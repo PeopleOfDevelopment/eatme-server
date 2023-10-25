@@ -3,9 +3,10 @@
 <mapper namespace="com.example.eatmeserver.user.eco_status.EcoStatusMapper">
     <select id="selectEco" resultType="com.example.eatmeserver.user.eco_status.EcoStatusFlex">
         SELECT *
-        FROM TBL_USERS A
-        WHERE A.USER_ID = #{userId}
-          AND A.USER_NM = #{userNm}
+        FROM TBL_SELLING A
+        WHERE A.CANCEL_YN=false
+
+
     </select>
 
 </mapper>
