@@ -15,6 +15,7 @@ public class MainPageItemFlex {
     private String corpNm;
     private Integer itemPrc;
     private Integer salePrc;
+    private Integer saleAmt;
     private LocalDate itemExpdate;
     private BigDecimal discountRat;
 }
