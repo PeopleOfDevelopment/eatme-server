@@ -55,6 +55,7 @@
         FROM TBL_GOODS A LEFT OUTER JOIN TBL_ITEM B
                         ON A.ITEM_CD = B.ITEM_CD
         WHERE A.CORP_CD = #{corpCd}
+          AND B.CORP_CD = #{corpCd}
         <if test="itemCdNm != null and itemCdNm != ''">
             AND (  A.ITEM_CD iLIKE '%' ||#{itemCdNm}|| '%'
             OR B.ITEM_NM iLIKE '%'||#{itemCdNm}||'%'
