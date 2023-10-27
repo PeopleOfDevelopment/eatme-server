@@ -3,6 +3,7 @@ package com.example.eatmeserver.seller.goods_mgm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,12 +14,12 @@ public class GoodsMgmService {
     public GoodsMgmResult getSelling(GoodsMgmParam param) {
         GoodsMgmResult result = new GoodsMgmResult();
         List<GoodsMgmFlex> queryResult = mapper.selectSelling(param);
-        List<GoodsMgmFlex> pick = null;
-        List<GoodsMgmFlex> deli = null;
+        List<GoodsMgmFlex> pick = new ArrayList<GoodsMgmFlex>();
+        List<GoodsMgmFlex> deli = new ArrayList<GoodsMgmFlex>();
 
         for(GoodsMgmFlex flex : queryResult) {
-            if(flex.getPickYn() == true) pick.add(flex);
-            else if (flex.getPickYn() == false) deli.add(flex);
+            if(flex.getPickYn() != null && flex.getPickYn().equals("1")) pick.add(flex);
+            else if (flex.getPickYn() != null && flex.getPickYn().equals("0")) deli.add(flex);
         }
         result.setSellingAll(mapper.selectGoods(param));
         result.setSellingPick(pick);

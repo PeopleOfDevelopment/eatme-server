@@ -47,13 +47,14 @@
         SELECT A.ITEM_CD
         , A.CORP_CD
         , B.ITEM_NM
-        , A.ITEM_BARCODE
         , A.SALE_PRC
         , A.DISCOUNT_RAT
         , A.ITEM_EXPDATE
         , A.ITEM_QTY
         , A.ORDERER_NAME
         , A.SOLD_QTY
+        , A.PICK_YN
+        , A.CANCEL_YN
         FROM TBL_SELLING A LEFT OUTER JOIN TBL_ITEM B
         ON A.ITEM_CD = B.ITEM_CD
         WHERE A.CORP_CD = #{corpCd}
