@@ -16,10 +16,10 @@ public class GoodsMgmFlex {
     private LocalDate itemExpdate;
     private String itemNm;
 
-    private Boolean pickYn;
+    private String pickYn;
     private Integer itemQty;
     private Integer soldQty;
     private String ordererName;
-    private Boolean cancelYn;
+    private String cancelYn;
 
 }
