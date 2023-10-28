@@ -8,4 +8,5 @@ public class ItemRegParam {
     private String corpCd;
     private String itemCdNm;
     private String itemBarcode;
+    private String itemCd;
 }
