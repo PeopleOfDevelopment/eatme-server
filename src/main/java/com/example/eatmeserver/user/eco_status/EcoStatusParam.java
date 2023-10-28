@@ -9,4 +9,6 @@ import java.time.LocalDate;
 public class EcoStatusParam {
     private LocalDate thisYear;
     private LocalDate lastYear;
+
+    private String userId;
 }

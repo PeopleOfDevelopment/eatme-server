@@ -9,4 +9,5 @@ public class EcoStatusFlex {
     private String itemNm;
     private Integer itemQty;
     private Integer salePrc;
+    private Integer soldQty;
 }
