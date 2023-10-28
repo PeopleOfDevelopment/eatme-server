@@ -4,9 +4,14 @@
     <select id="selectEco" resultType="com.example.eatmeserver.user.eco_status.EcoStatusFlex">
         SELECT *
         FROM TBL_SELLING A
-        WHERE A.CANCEL_YN=false
+        WHERE A.CANCEL_YN = '0'
+    </select>
 
-
+    <select id="selectMyEco" resultType="com.example.eatmeserver.user.eco_status.EcoStatusFlex">
+        SELECT *
+        FROM TBL_SELLING A
+        WHERE A.CANCEL_YN = '0'
+          AND A.ORDERER_NAME = #{userId}
     </select>
 
 </mapper>

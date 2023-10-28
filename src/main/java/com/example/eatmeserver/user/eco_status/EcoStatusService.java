@@ -10,7 +10,7 @@ import java.util.List;
 public class EcoStatusService {
     private final EcoStatusMapper mapper;
 
-    final int TREECONSTANT = 4;
+    final int TREE_CONSTANT = 4;
 
     public EcoStatusResult getStatus(EcoStatusParam param) {
         List<EcoStatusFlex> ecoResultList = mapper.selectEco(param);
@@ -20,12 +20,26 @@ public class EcoStatusService {
 
         // 판매 수량 누적
         for(EcoStatusFlex list : ecoResultList) {
-            saveTree += list.getItemQty();
+            saveTree += list.getSoldQty();
         }
 
-        saveTree = saveTree / TREECONSTANT;
+        saveTree = saveTree / TREE_CONSTANT;
 
         return new EcoStatusResult(saveTree, thisYearStatus, lastYearStatus);
+    }
+
+    public EcoStatusResult getMyStatus(EcoStatusParam param) {
+        List<EcoStatusFlex> ecoResultList = mapper.selectMyEco(param);
+        int mySaveTree = 0;
+        int thisYearStatus = 0;
+        int lastYearStatus = 0;
+
+        for(EcoStatusFlex list : ecoResultList) {
+            mySaveTree += list.getSoldQty();
+        }
+        mySaveTree = mySaveTree / TREE_CONSTANT;
+
+        return new EcoStatusResult(mySaveTree, thisYearStatus, lastYearStatus);
     }
 
 }

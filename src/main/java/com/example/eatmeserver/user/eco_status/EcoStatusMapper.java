@@ -7,4 +7,6 @@ import java.util.List;
 @Mapper
 public interface EcoStatusMapper {
     List<EcoStatusFlex> selectEco(EcoStatusParam param);
+
+    List<EcoStatusFlex> selectMyEco(EcoStatusParam param);
 }
