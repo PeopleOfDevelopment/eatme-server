@@ -20,7 +20,7 @@ public class FileController {
         String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resource\\static\\image";
         UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + image.getOriginalFilename();
-        File saveFile = new File(uploadPath, "name");
+        File saveFile = new File(uploadPath, fileName);
 
         image.transferTo(saveFile);
     }
