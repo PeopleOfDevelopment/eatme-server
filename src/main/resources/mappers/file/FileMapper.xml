@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eatmeserver.file.FileMapper">
+    <insert id="insertImg">
+        INSERT INTO TBL_ITEM_IMG (
+                                ITEM_CD
+                              , CORP_CD
+                              , IMG_NM
+                              , IMG_LOC
+                              , USER_ID
+                              , IMG_ID
+        )VALUES (
+                  #{itemCd}
+                , #{corpCd}
+                , #{imgNm}
+                , #{imgLoc}
+                , #{userId}
+                , #{imgId}
+                )
+    </insert>
+
+    <update id="updateGoods">
+        UPDATE TBL_GOODS
+        SET ITEM_CD = #{itemCd}
+          , ITEM_BARCODE = #{itemBarcode}
+          , SALE_PRC = #{salePrc}
+          , SALE_AMT = #{saleAmt}
+          , DISCOUNT_RAT = #{discountRat}
+          , UPDATE_DATE = CURRENT_TIMESTAMP
+        WHERE CORP_CD = #{corpCd}
+          AND ITEM_CD = #{itemCd}
+    </update>
+
+    <delete id="deleteGoods">
+        DELETE FROM TBL_GOODS
+        WHERE ITEM_CD = #{itemCd}
+          AND CORP_CD = #{corpCd}
+    </delete>
+
+    <select id="selectImg" resultType="com.example.eatmeserver.file.FileFlex">
+        SELECT A.ITEM_CD
+        , A.CORP_CD
+        , A.IMG_NM
+        , A.IMG_LOC
+        , A.USER_ID
+        , A.IMG_ID
+        FROM TBL_ITEM_IMG A
+        WHERE A.CORP_CD = #{corpCd}
+          AND A.ITEM_CD = #{itemCd}
+    </select>
+</mapper>

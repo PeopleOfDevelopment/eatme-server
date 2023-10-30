@@ -5,7 +5,7 @@
         SELECT *
           FROM TBL_USERS A
          WHERE A.USER_ID = #{userId}
-           AND A.USER_NM = #{userNm}
+
     </select>
 
 
