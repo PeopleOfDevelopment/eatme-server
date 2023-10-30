@@ -12,7 +12,7 @@
                   , INSERT_DATE
                   , UPDATE_DATE
         )VALUES (
-                #{itemCd}
+                nextval('SEQ_ITEM')
               , #{corpCd}
               , #{itemNm}
               , #{itemBarcode}

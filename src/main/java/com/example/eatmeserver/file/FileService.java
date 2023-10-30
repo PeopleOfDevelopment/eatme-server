@@ -22,20 +22,17 @@ public class FileService {
     private final FileMapper mapper;
 
     @Transactional
-    public int saveImg(FileFlex flex, MultipartFile image) throws Exception{
-        String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resource\\static\\image";
+    public int saveImg(FileFlex flex, MultipartFile file) throws Exception{
+        String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
+//        String uploadPath = "C:/upload";
         UUID uuid = UUID.randomUUID();
 
-        try {
-            String fileName = uuid + "_" + image.getOriginalFilename();
-            File saveFile = new File(uploadPath, fileName);
-            image.transferTo(saveFile);
-        }catch (Exception e) {
-            return 0;
-        }
+        String fileName = uuid + "_" + file.getOriginalFilename();
+        File saveFile = new File(uploadPath, fileName);
+        file.transferTo(saveFile);
 
-        flex.setImgId(uuid);
-        flex.setImgNm(image.getOriginalFilename());
+        flex.setImgId(uuid.toString());
+        flex.setImgNm(file.getOriginalFilename());
         flex.setImgLoc(uploadPath);
 
         return mapper.insertImg(flex);
