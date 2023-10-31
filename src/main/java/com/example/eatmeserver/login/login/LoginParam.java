@@ -23,4 +23,7 @@ public class LoginParam {
     // 아이디 비밀번호 찾기 파라미터
     private String userEmail;
     private String userPhoneNumber;
+
+    // 로그인 후 가맹점 조회시 사용하는 파라미터
+    private String corpCd;
 }

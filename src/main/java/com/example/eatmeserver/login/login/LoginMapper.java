@@ -13,4 +13,6 @@ public interface LoginMapper {
     Integer findPw(LoginParam param);
 
     Integer resetPw(LoginParam param);
+
+    LoginParam selectCorp(LoginParam param);
 }
