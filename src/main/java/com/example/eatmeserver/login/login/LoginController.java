@@ -60,4 +60,9 @@ public class LoginController {
         return find.resetPw(param);
     }
 
+    @PostMapping("/getCorpCd")
+    public String getCorpCd(@RequestBody LoginParam param) {
+        return find.getCorpCd(param);
+    }
+
 }

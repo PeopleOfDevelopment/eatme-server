@@ -21,4 +21,12 @@ public class FindService {
     public int resetPw(LoginParam param) {
         return mapper.resetPw(param);
     }
+
+    public String getCorpCd(LoginParam param) {
+        LoginParam result = mapper.selectCorp(param);
+        if(result != null ) {
+            return result.getCorpCd();
+        }
+        return "가맹점 등록이 되지 않은 계정입니다.";
+    }
 }
