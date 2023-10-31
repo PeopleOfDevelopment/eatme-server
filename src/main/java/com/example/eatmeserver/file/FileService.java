@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -38,18 +39,15 @@ public class FileService {
         return mapper.insertImg(flex);
     }
 
-    public ResponseEntity<byte[]> getImage(String corpCd, String itemCd) throws Exception{
-        FileParam param = new FileParam();
-        param.setCorpCd(corpCd);
-        param.setItemCd(itemCd);
+    public ResponseEntity<byte[]> getImage(FileParam param) throws Exception{
+        String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
         FileFlex flex = mapper.selectImg(param);
-
-        Path path = Paths.get(flex.getImgLoc(), flex.getImgId().toString());
-        byte[] imageBytes = Files.readAllBytes(path);
+        String fileName = flex.getImgId().toString() + "_" + flex.getImgNm();
+        File file = new File(uploadPath, fileName);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
 
-        return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+        return new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
     }
 }

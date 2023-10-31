@@ -32,9 +32,9 @@ public class FileController {
         service.saveImg(flex, imageData);
     }
 
-    @PostMapping("/getImg/{corpCd}/{itemCd}")
-    public ResponseEntity<byte[]> getImage(@PathVariable String corpCd, @PathVariable String itemCd) throws Exception{
-        return service.getImage(corpCd, itemCd);
+    @PostMapping("/getImg")
+    public ResponseEntity<byte[]> getImage(@RequestBody FileParam param) throws Exception{
+        return service.getImage(param);
     }
 
 
