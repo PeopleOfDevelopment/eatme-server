@@ -50,4 +50,8 @@ public class FileService {
 
         return new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
     }
+
+    public FileFlex getImageInfo(FileParam param) {
+        return mapper.selectImg(param);
+    }
 }
