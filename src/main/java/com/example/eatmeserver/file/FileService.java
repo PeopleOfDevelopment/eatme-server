@@ -41,6 +41,7 @@ public class FileService {
 
     public ResponseEntity<byte[]> getImage(FileParam param) throws Exception{
         String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
+        param.setItemCd(Integer.toString(Integer.parseInt(param.getItemCd()) + 1));
         FileFlex flex = mapper.selectImg(param);
         String fileName = flex.getImgId().toString() + "_" + flex.getImgNm();
         File file = new File(uploadPath, fileName);
@@ -49,5 +50,9 @@ public class FileService {
         headers.setContentType(MediaType.IMAGE_JPEG);
 
         return new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+    }
+
+    public FileFlex getImageInfo(FileParam param) {
+        return mapper.selectImg(param);
     }
 }
