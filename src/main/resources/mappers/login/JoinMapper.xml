@@ -26,4 +26,16 @@
               , CURRENT_TIMESTAMP
         )
     </insert>
+
+    <select id="select" resultType="int">
+        SELECT COUNT(A.USER_ID)
+          FROM TBL_USERS A
+         WHERE 1 = 1
+         <if test="userId != null and userId != '' ">
+           AND A.USER_ID = #{userId}
+         </if>
+         <if test="userNick != null and userNick != ''">
+           AND A.USER_NICK = #{userNick}
+         </if>
+    </select>
 </mapper>

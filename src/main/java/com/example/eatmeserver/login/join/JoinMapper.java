@@ -7,4 +7,6 @@ public interface JoinMapper {
 
     int insert(JoinParam param);
 
+    int select(JoinParam param);
+
 }
