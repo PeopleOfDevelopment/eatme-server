@@ -18,4 +18,9 @@ public class JoinController {
         int result = service.join(param);
         return result;
     }
+
+    @PostMapping("checkOverlap")
+    public boolean checkOverlap(@RequestBody JoinParam param) {
+        return service.checkOverlap(param);
+    }
 }
