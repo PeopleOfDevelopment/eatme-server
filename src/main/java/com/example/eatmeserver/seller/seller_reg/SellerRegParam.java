@@ -14,4 +14,6 @@ public class SellerRegParam extends BaseModel {
     private String corpAddr;
     private String corpDesc;
     private Boolean useYn;
+    private String CeoNm;
+    private String corpPhoneNumber;
 }

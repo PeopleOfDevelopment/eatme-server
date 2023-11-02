@@ -12,6 +12,8 @@
                               , USE_YN
                               , INSERT_DATE
                               , UPDATE_DATE
+                              , CEO_NM
+                              , CORP_PHONE_NUMBER
         )VALUES (
                  #{corpCd}
                , #{corpNm}
@@ -22,6 +24,8 @@
                , true
                , CURRENT_TIMESTAMP
                , CURRENT_TIMESTAMP
+               , #{ceoNm}
+               , #{corpPhoneNumber}
         )
     </insert>
 </mapper>
