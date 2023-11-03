@@ -74,8 +74,8 @@
              , A.NOTICE_FRDT
              , A.INSERT_DATE
           FROM TBL_NOTICE A
-         WHERE A.NOTICE_FRDT > #{noticeFrdt}
-           AND A.NOTICE_TODT &lt;= #{noticeTodt}
+         WHERE A.NOTICE_FRDT > CURRENT_DATE
+           AND A.NOTICE_TODT &lt;= CURRENT_DATE
            AND A.NOTICE_TP = #{noticeTp}
         <if test="limitNum != null and limitNum != ''">
             ORDER BY A.INSERT_DATE
