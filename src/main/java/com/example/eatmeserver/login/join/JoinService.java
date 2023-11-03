@@ -19,4 +19,11 @@ public class JoinService {
         return mapper.insert(param);
     }
 
+    public boolean checkOverlap(JoinParam param) {
+        int result = mapper.select(param);
+
+        if(result == 0) return true;
+        else return false;
+    }
+
 }
