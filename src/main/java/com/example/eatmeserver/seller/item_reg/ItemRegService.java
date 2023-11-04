@@ -34,4 +34,9 @@ public class ItemRegService {
     public int deleteItem(ItemRegParam param) {
         return mapper.deleteItem(param);
     }
+
+    /** 시퀀스 조회 */
+    public int getSeq() {
+        return mapper.selectSeqItem();
+    }
 }

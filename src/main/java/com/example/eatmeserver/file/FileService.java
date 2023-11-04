@@ -25,7 +25,6 @@ public class FileService {
     @Transactional
     public int saveImg(FileFlex flex, MultipartFile file) throws Exception{
         String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
-//        String uploadPath = "C:/upload";
         UUID uuid = UUID.randomUUID();
 
         String fileName = uuid + "_" + file.getOriginalFilename();
@@ -41,7 +40,8 @@ public class FileService {
 
     public ResponseEntity<byte[]> getImage(FileParam param) throws Exception{
         String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
-        param.setItemCd(Integer.toString(Integer.parseInt(param.getItemCd()) + 1));
+        System.out.println(param.getItemCd());
+        System.out.println(param.getCorpCd());
         FileFlex flex = mapper.selectImg(param);
         String fileName = flex.getImgId().toString() + "_" + flex.getImgNm();
         File file = new File(uploadPath, fileName);

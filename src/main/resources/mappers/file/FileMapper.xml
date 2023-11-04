@@ -10,7 +10,7 @@
                               , USER_ID
                               , IMG_ID
         )VALUES (
-                  nextval('SEQ_ITEM')
+                  #{itemCd}
                 , #{corpCd}
                 , #{imgNm}
                 , #{imgLoc}

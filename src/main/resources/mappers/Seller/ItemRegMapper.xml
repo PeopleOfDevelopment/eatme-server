@@ -58,4 +58,8 @@
                AND A.ITEM_BARCODE = #{itemBarcode}
            </if>
     </select>
+
+    <select id="selectSeqItem" resultType="int">
+        SELECT last_value FROM seq_item;
+    </select>
 </mapper>

@@ -35,4 +35,7 @@ public class ItemRegController {
     public int deleteItem(@RequestBody ItemRegParam param) {
         return service.deleteItem(param);
     }
+
+    @PostMapping("/getSeq")
+    public int getSeq() { return service.getSeq(); }
 }
