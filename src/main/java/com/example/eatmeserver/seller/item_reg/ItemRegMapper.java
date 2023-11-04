@@ -18,4 +18,7 @@ public interface ItemRegMapper {
 
     /** 등록된 품목 삭제 */
     int deleteItem(ItemRegParam param);
+
+    /** 시퀀스 조회 */
+    int selectSeqItem();
 }

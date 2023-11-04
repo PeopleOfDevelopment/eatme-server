@@ -84,7 +84,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 "/api/marketInfo/query",
                 "/api/login/getCorpCd",
                 "/api/file/getImgInfo",
-                "/api/join/checkOverlap"
+                "/api/join/checkOverlap",
+                "/api/itemReg/getSeq"
         );
 
         // 2. 토큰이 필요하지 않은 API URL의 경우 => 로직 처리 없이 다음 필터로 이동
