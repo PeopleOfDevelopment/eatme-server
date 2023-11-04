@@ -12,6 +12,5 @@ public class JoinParam extends BaseModel {
     private String userEmail;
     private String userNick;
     private String userAddr;
-    private String userPhoneNumber;
     private Boolean useYn;
 }
