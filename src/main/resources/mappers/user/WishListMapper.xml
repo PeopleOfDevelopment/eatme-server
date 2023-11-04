@@ -19,6 +19,7 @@
     <delete id="deleteWish">
         DELETE FROM TBL_WISH
         WHERE USER_ID = #{userId}
+          AND CORP_CD = #{corpCd}
     </delete>
 
 
