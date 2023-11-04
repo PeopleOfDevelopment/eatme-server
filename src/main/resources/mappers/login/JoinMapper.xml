@@ -9,7 +9,6 @@
                   , USER_NICK
                   , USER_EMAIL
                   , USER_ADDR
-                  , USER_PHONE_NUMBER
                   , USE_YN
                   , INSERT_DATE
                   , UPDATE_DATE
@@ -20,7 +19,6 @@
               , #{userNick}
               , #{userEmail}
               , #{userAddr}
-              , #{userPhoneNumber}
               , true
               , CURRENT_TIMESTAMP
               , CURRENT_TIMESTAMP
