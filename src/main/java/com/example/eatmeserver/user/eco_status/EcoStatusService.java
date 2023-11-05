@@ -12,8 +12,8 @@ public class EcoStatusService {
 
     final int TREE_CONSTANT = 4;
 
-    public EcoStatusResult getStatus(EcoStatusParam param) {
-        List<EcoStatusFlex> ecoResultList = mapper.selectEco(param);
+    public EcoStatusResult getStatus() {
+        List<EcoStatusFlex> ecoResultList = mapper.selectEco();
         int saveTree = 0;
         int allSaleAmt = 0;
         int allSalePrc = 0;
