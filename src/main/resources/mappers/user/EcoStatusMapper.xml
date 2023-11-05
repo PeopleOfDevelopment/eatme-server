@@ -2,16 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.eatmeserver.user.eco_status.EcoStatusMapper">
     <select id="selectEco" resultType="com.example.eatmeserver.user.eco_status.EcoStatusFlex">
-        SELECT *
-        FROM TBL_SELLING A
-        WHERE A.CANCEL_YN = '0'
-    </select>
-
-    <select id="selectMyEco" resultType="com.example.eatmeserver.user.eco_status.EcoStatusFlex">
-        SELECT *
-        FROM TBL_SELLING A
-        WHERE A.CANCEL_YN = '0'
-          AND A.ORDERER_NAME = #{userId}
+        SELECT A.SALE_AMT
+             , A.SALE_PRC
+        FROM TBL_GOODS A
     </select>
 
 </mapper>

@@ -15,31 +15,17 @@ public class EcoStatusService {
     public EcoStatusResult getStatus(EcoStatusParam param) {
         List<EcoStatusFlex> ecoResultList = mapper.selectEco(param);
         int saveTree = 0;
-        int thisYearStatus = 0;
-        int lastYearStatus = 0;
-
+        int allSaleAmt = 0;
+        int allSalePrc = 0;
         // 판매 수량 누적
         for(EcoStatusFlex list : ecoResultList) {
-            saveTree += list.getSoldQty();
+            saveTree += list.getSaleAmt();
+            allSalePrc += list.getSalePrc() * list.getSaleAmt();
         }
 
+        allSaleAmt = saveTree;
         saveTree = saveTree / TREE_CONSTANT;
-
-        return new EcoStatusResult(saveTree, thisYearStatus, lastYearStatus);
-    }
-
-    public EcoStatusResult getMyStatus(EcoStatusParam param) {
-        List<EcoStatusFlex> ecoResultList = mapper.selectMyEco(param);
-        int mySaveTree = 0;
-        int thisYearStatus = 0;
-        int lastYearStatus = 0;
-
-        for(EcoStatusFlex list : ecoResultList) {
-            mySaveTree += list.getSoldQty();
-        }
-        mySaveTree = mySaveTree / TREE_CONSTANT;
-
-        return new EcoStatusResult(mySaveTree, thisYearStatus, lastYearStatus);
+        return new EcoStatusResult(saveTree, allSaleAmt, allSalePrc);
     }
 
 }
