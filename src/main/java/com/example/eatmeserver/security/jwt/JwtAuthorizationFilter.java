@@ -53,6 +53,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 "/api/dashboard/qnaDetail",
                 "/api/dashboard/updateQnaAns",
                 "/api/basket/query",
+                "/api/basket/insert",
+                "/api/basket/delete",
                 "/api/admin/qna/query",
                 "/api/admin/qna/detail",
                 "/api/admin/qna/update",
