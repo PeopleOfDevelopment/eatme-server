@@ -18,7 +18,6 @@
             ON A.CORP_CD = C.CORP_CD
            AND A.ITEM_CD = C.ITEM_CD
          WHERE A.USER_ID = #{userId}
-           AND A.PURCHASE_ST = '주문전'
     </select>
 
     <insert id="insertBasket">
