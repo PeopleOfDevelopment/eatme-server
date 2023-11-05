@@ -9,5 +9,8 @@ public class MarketInfoFlex {
     private String corpNm;
     private String corpAddr;
     private String corpDesc;
+    private String corpPhoneNumber;
+    private String ceoNm;
+    private String openTime;
 
 }

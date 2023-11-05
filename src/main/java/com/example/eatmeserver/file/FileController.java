@@ -40,6 +40,21 @@ public class FileController {
         return service.getImage(param);
     }
 
+    @PostMapping("/uploadCorp")
+    public void uploadCorpFile(@RequestParam("imageInfo") String flexJson, @RequestPart("imageData") MultipartFile imageData) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        FileFlex flex = mapper.readValue(flexJson, FileFlex.class);
+
+        service.saveCorpImg(flex, imageData);
+    }
+
+    @GetMapping("/getCorpImg")
+    public ResponseEntity<byte[]> getCorpImage(@RequestParam("corpCd") String corpCd) throws Exception{
+        FileParam param = new FileParam();
+        param.setCorpCd(corpCd);
+        return service.getCorpImage(param);
+    }
+
     @PostMapping("/getImgInfo")
     public FileFlex getImageInfo(@RequestBody FileParam param) {
         return service.getImageInfo(param);

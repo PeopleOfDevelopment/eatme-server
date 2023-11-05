@@ -40,9 +40,37 @@ public class FileService {
 
     public ResponseEntity<byte[]> getImage(FileParam param) throws Exception{
         String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
-        System.out.println(param.getItemCd());
-        System.out.println(param.getCorpCd());
+
         FileFlex flex = mapper.selectImg(param);
+        String fileName = flex.getImgId().toString() + "_" + flex.getImgNm();
+        File file = new File(uploadPath, fileName);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+    }
+
+    public int saveCorpImg (FileFlex flex, MultipartFile file) throws Exception {
+        String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
+        UUID uuid = UUID.randomUUID();
+
+        String fileName = uuid + "_" + file.getOriginalFilename();
+        File saveFile = new File(uploadPath, fileName);
+        file.transferTo(saveFile);
+
+        flex.setCorpCd(flex.getCorpCd());
+        flex.setImgId(uuid.toString());
+        flex.setImgNm(file.getOriginalFilename());
+        flex.setImgLoc(uploadPath);
+
+        return mapper.insertCorpImg(flex);
+    }
+
+    public ResponseEntity<byte[]> getCorpImage(FileParam param) throws Exception{
+        String uploadPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\image";
+
+        FileFlex flex = mapper.selectCorpImg(param);
         String fileName = flex.getImgId().toString() + "_" + flex.getImgNm();
         File file = new File(uploadPath, fileName);
 
