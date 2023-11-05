@@ -11,7 +11,7 @@
              , B.DISCOUNT_RAT
              , A.ITEM_EXPDATE
           FROM TBL_BASKET AS A
-    INNER JOIN TBL_SELLING AS B
+    INNER JOIN TBL_GOODS AS B
             ON A.CORP_CD = B.CORP_CD
            AND A.ITEM_CD = B.ITEM_CD
     INNER JOIN TBL_ITEM AS C
