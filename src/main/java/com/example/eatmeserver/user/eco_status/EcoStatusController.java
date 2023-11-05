@@ -18,8 +18,4 @@ public class EcoStatusController {
         return new ResMap(service.getStatus(param));
     }
 
-    @PostMapping("/queryMyEco")
-    public ResMap getMyStatus(@RequestBody EcoStatusParam param) {
-        return new ResMap(service.getMyStatus(param));
-    }
 }

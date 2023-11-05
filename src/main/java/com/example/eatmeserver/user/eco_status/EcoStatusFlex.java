@@ -5,9 +5,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class EcoStatusFlex {
-    private String itemCd;
-    private String itemNm;
-    private Integer itemQty;
     private Integer salePrc;
-    private Integer soldQty;
+    private Integer saleAmt;
 }
