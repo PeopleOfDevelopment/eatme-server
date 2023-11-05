@@ -19,23 +19,19 @@
                 )
     </insert>
 
-    <update id="updateGoods">
-        UPDATE TBL_GOODS
-        SET ITEM_CD = #{itemCd}
-          , ITEM_BARCODE = #{itemBarcode}
-          , SALE_PRC = #{salePrc}
-          , SALE_AMT = #{saleAmt}
-          , DISCOUNT_RAT = #{discountRat}
-          , UPDATE_DATE = CURRENT_TIMESTAMP
-        WHERE CORP_CD = #{corpCd}
-          AND ITEM_CD = #{itemCd}
-    </update>
-
-    <delete id="deleteGoods">
-        DELETE FROM TBL_GOODS
-        WHERE ITEM_CD = #{itemCd}
-          AND CORP_CD = #{corpCd}
-    </delete>
+    <insert id="insertCorpImg">
+        INSERT INTO TBL_CORP_IMG (
+                      CORP_CD
+                    , IMG_NM
+                    , IMG_LOC
+                    , IMG_ID
+        )VALUES (
+                  #{corpCd}
+                , #{imgNm}
+                , #{imgLoc}
+                , #{imgId}
+                )
+    </insert>
 
     <select id="selectImg" resultType="com.example.eatmeserver.file.FileFlex">
         SELECT A.ITEM_CD
@@ -47,5 +43,14 @@
         FROM TBL_ITEM_IMG A
         WHERE A.CORP_CD = #{corpCd}
           AND A.ITEM_CD = #{itemCd}
+    </select>
+
+    <select id="selectCorpImg" resultType="com.example.eatmeserver.file.FileFlex">
+        SELECT A.CORP_CD
+             , A.IMG_NM
+             , A.IMG_LOC
+             , A.IMG_ID
+        FROM TBL_CORP_IMG A
+        WHERE A.CORP_CD = #{corpCd}
     </select>
 </mapper>

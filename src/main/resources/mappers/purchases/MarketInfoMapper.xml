@@ -6,6 +6,9 @@
              , A.CORP_NM
              , A.CORP_ADDR
              , A.CORP_DESC
+             , A.CORP_PHONE_NUMBER
+             , A.CEO_NM
+             , A.OPEN_TIME
         FROM TBL_CORP A
         WHERE A.CORP_CD = #{corpCd}
     </select>
