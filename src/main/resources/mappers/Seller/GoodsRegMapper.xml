@@ -47,6 +47,7 @@
         SELECT A.ITEM_CD
         , A.CORP_CD
         , B.ITEM_NM
+        , B.ITEM_PRC
         , A.ITEM_BARCODE
         , A.SALE_PRC
         , A.SALE_AMT
