@@ -16,4 +16,5 @@ public class GoodsRegFlex extends BaseModel {
     private Integer saleAmt;
     private LocalDate itemExpdate;
     private String itemNm;
+    private Integer itemPrc;
 }
